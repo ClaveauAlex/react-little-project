@@ -35,10 +35,10 @@ function Navbar({ toggle }) {
             <NavItem>
               <NavLinks to="signup">Sign up</NavLinks>
             </NavItem>
-            <NavBtn>
+          </NavMenu>
+          <NavBtn>
               <NavBtnLink to="/signin">Sign In</NavBtnLink>
             </NavBtn>
-          </NavMenu>
         </NavbarContainer>
       </Nav>
     </>
