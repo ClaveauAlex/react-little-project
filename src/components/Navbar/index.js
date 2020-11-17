@@ -12,13 +12,13 @@ import {
   NavBtnLink,
 } from "./NavbarElements";
 
-function Navbar() {
+function Navbar({ toggle }) {
   return (
     <>
       <Nav>
         <NavbarContainer>
           <NavLogo to="/">dolla</NavLogo>
-          <MobileIcon>
+          <MobileIcon onClick={toggle} >
             <FaBars />
           </MobileIcon>
           <NavMenu>
@@ -27,7 +27,6 @@ function Navbar() {
               <NavLinks to="about">About</NavLinks>
             </NavItem>
             <NavItem>
-              {/* On ne met pas de slash dans notre route puisqu'on va utiliser plutot l'ID */}
               <NavLinks to="discover">Discover</NavLinks>
             </NavItem>
             <NavItem>
