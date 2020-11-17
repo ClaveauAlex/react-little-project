@@ -37,7 +37,7 @@ function Navbar() {
               <NavLinks to="signup">Sign up</NavLinks>
             </NavItem>
             <NavBtn>
-              <NavBtnLink to="/signin">Sign in</NavBtnLink>
+              <NavBtnLink to="/signin">Sign In</NavBtnLink>
             </NavBtn>
           </NavMenu>
         </NavbarContainer>
