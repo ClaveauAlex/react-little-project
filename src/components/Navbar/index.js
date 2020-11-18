@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
+import { IconContext } from "react-icons/lib";
+import { animateScroll as scroll } from "react-scroll";
 import {
   Nav,
   NavbarContainer,
@@ -13,34 +15,92 @@ import {
 } from "./NavbarElements";
 
 function Navbar({ toggle }) {
+  const [scrollNav, setSCrollNav] = useState(false);
+
+  const changeNav = function () {
+    if (window.scrollY >= 80) {
+      setSCrollNav(true);
+    } else {
+      setSCrollNav(false);
+    }
+  };
+
+  useEffect(function () {
+    window.addEventListener("scroll", changeNav);
+  }, []);
+
+  const toggleHome = function () {
+    scroll.scrollToTop();
+  };
+
   return (
     <>
-      <Nav>
-        <NavbarContainer>
-          <NavLogo to="/">dolla</NavLogo>
-          <MobileIcon onClick={toggle} >
-            <FaBars />
-          </MobileIcon>
-          <NavMenu>
-            <NavItem>
-              {/* On ne met pas de slash dans notre route puisqu'on va utiliser plutot l'ID */}
-              <NavLinks to="about">About</NavLinks>
-            </NavItem>
-            <NavItem>
-              <NavLinks to="discover">Discover</NavLinks>
-            </NavItem>
-            <NavItem>
-              <NavLinks to="services">Services</NavLinks>
-            </NavItem>
-            <NavItem>
-              <NavLinks to="signup">Sign up</NavLinks>
-            </NavItem>
-          </NavMenu>
-          <NavBtn>
+      <IconContext.Provider value={{ color: "#fff" }}>
+        <Nav scrollNav={scrollNav}>
+          <NavbarContainer>
+            <NavLogo to="/" onClick={toggleHome}>
+              dolla
+            </NavLogo>
+            <MobileIcon onClick={toggle}>
+              <FaBars />
+            </MobileIcon>
+            <NavMenu>
+              <NavItem>
+                {/* On ne met pas de slash dans notre route puisqu'on va utiliser plutot l'ID */}
+                <NavLinks
+                  to="about"
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  exact="true"
+                  offset={-80}
+                >
+                  About
+                </NavLinks>
+              </NavItem>
+              <NavItem>
+                <NavLinks
+                  to="discover"
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  exact="true"
+                  offset={-80}
+                >
+                  Discover
+                </NavLinks>
+              </NavItem>
+              <NavItem>
+                <NavLinks
+                  to="services"
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  exact="true"
+                  offset={-80}
+                >
+                  Services
+                </NavLinks>
+              </NavItem>
+              <NavItem>
+                <NavLinks
+                  to="signup"
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  exact="true"
+                  offset={-80}
+                >
+                  Sign up
+                </NavLinks>
+              </NavItem>
+            </NavMenu>
+            <NavBtn>
               <NavBtnLink to="/signin">Sign In</NavBtnLink>
             </NavBtn>
-        </NavbarContainer>
-      </Nav>
+          </NavbarContainer>
+        </Nav>
+      </IconContext.Provider>
     </>
   );
 }
