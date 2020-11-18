@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import {homeObjOne, homeObjTwo, homeObjThree} from '../components/InfoSection/Data';
 import Services from "../components/Services";
+import Footer from "../components/Footer";
 
 function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +22,8 @@ function Home() {
       <InfoSection {...homeObjOne} />
       <InfoSection {...homeObjTwo} />
       <Services /> 
-      <InfoSection {...homeObjThree} />  
+      <InfoSection {...homeObjThree} />
+      <Footer />  
     </>
   );
 }
